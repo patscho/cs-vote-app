@@ -1,0 +1,112 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}CS-Vote-App{% endblock %}
+
+{% block navbar %}
+<div class="navbar navbar-fixed-top">
+  <!-- ... -->
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container text-center col-sm-4">
+  <div class="row">
+    <div class="page-header text-center">
+      <h3>CyberSecurity Pizza Poll</h3>
+    </div>
+  </div>
+  <div class="row">
+    <h5>Please rate the different sessions and the slice of security as a whole on a scale of 1 to 5, where 1 is lowest and 5 is highest.</h5>
+  </div>
+
+  <form action="/poll">
+      <div class="row">
+        <div class="form-group">
+          <h4>Line security & crypto (KPN)</h4>
+          <label class="radio-inline">
+            <input type="radio" name="topic1" id="t1radio1" value="1">1
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="topic1" id="t1radio2" value="2">2
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="topic1" id="t1radio3" value="3">3
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="topic1" id="t1radio4" value="4">4
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="topic1" id="t1radio5" value="5">5
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <h4>Threat Hunting (ING CDC)</h4>
+          <label class="radio-inline">
+            <input type="radio" name="topic2" id="t2radio1" value="1">1
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="topic2" id="t2radio2" value="2">2
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="topic2" id="t2radio3" value="3">3
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="topic2" id="t2radio4" value="4">4
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="topic2" id="t2radio5" value="5">5
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <h4>Live Hacking demo (FOX-IT)</h4>
+          <label class="radio-inline">
+            <input type="radio" name="topic3" id="t3radio1" value="1">1
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="topic3" id="t3radio2" value="2">2
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="topic3" id="t3radio3" value="3">3
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="topic3" id="t3radio4" value="4">4
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="topic3" id="t3radio5" value="5">5
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <h4>Slice of Security</h4>
+          <label class="radio-inline">
+            <input type="radio" name="topic4" id="t4radio1" value="1">1
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="topic4" id="t4radio2" value="2">2
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="topic4" id="t4radio3" value="3">3
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="topic4" id="t4radio4" value="4">4
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="topic4" id="t4radio5" value="5">5
+          </label>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <label for="textarea1">Do you have any remarks about the sessions and/or suggestions for future topics?</label>
+            <textarea class="form-control" name="textarea1" rows="3"></textarea>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-block btn-primary">Soepmiet</button>
+  </form>
+</div>
+
+{% endblock %}
