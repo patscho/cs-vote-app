@@ -9,9 +9,9 @@ app = Flask(__name__, static_url_path='/static')
 Bootstrap(app)
 
 fields = ['1', '2', '3', '4', '5']
-topic1 = 'Line security & crypto (KPN)'
-topic2 = 'Threat Hunting (ING CDC)'
-topic3 = 'Live Hacking demo (FOX-IT)'
+topic1 = 'Can the Cloud be Secure ?! (Renato Kuiper, Tesorion)'
+topic2 = 'Cyber Threat Intelligence (Michael Jones, ING)'
+topic3 = 'Hack#ING workshop: with live OWASP labs (Glenn ten Cate, ING)'
 topic4 = 'Slice of Security'
 
 filename = 'data.txt'
