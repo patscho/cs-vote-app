@@ -1,18 +1,21 @@
 from flask import Flask, render_template, request, redirect, make_response
 from flask_bootstrap import Bootstrap
 import json
-
-
 import datetime
 
 app = Flask(__name__, static_url_path='/static')
 Bootstrap(app)
 
-fields = ['1', '2', '3', '4', '5']
-topic1 = 'Can the Cloud be Secure ?! (Renato Kuiper, Tesorion)'
-topic2 = 'Cyber Threat Intelligence (Michael Jones, ING)'
-topic3 = 'Hack#ING workshop: with live OWASP labs (Glenn ten Cate, ING)'
-topic4 = 'Slice of Security'
+values = ['1', '2', '3', '4', '5']
+topic1 = {'id': 't1',
+          'title': 'Line security & crypto (KPN)'}
+topic2 = {'id': 't2',
+          'title': 'Threat Hunting (ING CDC)'}
+topic3 = {'id': 't3',
+          'title': 'Live Hacking demo (FOX-IT)'}
+topic4 = {'id': 't4',
+          'title': 'Overall pizza session: Slice of Security'}
+topics = [topic1, topic2, topic3, topic4]
 
 filename = 'data.txt'
 feedback_list = []
@@ -20,7 +23,7 @@ feedback_list = []
 
 @app.route('/')
 def root():
-    return render_template('poll.html')
+    return render_template('poll.html', topics=topics, values=values)
 
 
 def getcookie():
@@ -35,7 +38,7 @@ def getcookie():
 def poll():
 
     feedback = dict(request.args.items())
-
+    print(feedback)
     if not getcookie():
         feedback_list.append(feedback)
         with open(filename, mode='w') as my_file:
@@ -51,12 +54,14 @@ def poll():
 
 @app.route('/thankyou')
 def thankyou():
-    return render_template('thankyou.html')
+    message = 'Thank you for your feedback!'
+    return render_template('default_response.html', message=message)
 
 
 @app.route('/youalreadyvoted')
 def alreadyvoted():
-    return render_template('alreadyvoted.html')
+    message = 'Computer says: "No, you already voted." :('
+    return render_template('default_response.html', message=message)
 
 
 @app.route('/results')
@@ -67,23 +72,28 @@ def show_results():
     topic3_score = 0
     topic4_score = 0
     counter = 0
-    for f in fields:
-        votes[f] = 0
+    remarks = []
+    for val in values:
+        votes[val] = 0
 
-    with open(filename, 'r') as read_file:
-        feedback_list = json.load(read_file)
-    for feedback in feedback_list:
-        topic1_score += int(feedback['topic1'])
-        topic2_score += int(feedback['topic2'])
-        topic3_score += int(feedback['topic3'])
-        topic4_score += int(feedback['topic4'])
-        counter += 1
-    scores = [{'topic': topic1, 'score': topic1_score},
-              {'topic': topic2, 'score': topic2_score},
-              {'topic': topic3, 'score': topic3_score},
-              {'topic': topic4, 'score': topic4_score}]
-
-    return render_template('results.html', scores=scores, counter=counter)
+    try:
+        with open(filename, 'r') as read_file:
+            feedback_list = json.load(read_file)
+        for feedback in feedback_list:
+            topic1_score += int(feedback[topic1['id']])
+            topic2_score += int(feedback[topic2['id']])
+            topic3_score += int(feedback[topic3['id']])
+            topic4_score += int(feedback[topic4['id']])
+            counter += 1
+            remarks.append(feedback['textarea1'])
+        scores = [{'topic': topic1['title'], 'score': topic1_score},
+                  {'topic': topic2['title'], 'score': topic2_score},
+                  {'topic': topic3['title'], 'score': topic3_score},
+                  {'topic': topic4['title'], 'score': topic4_score}]
+    except json.decoder.JSONDecodeError:
+        scores = []
+    return render_template('results.html', scores=scores,
+                           counter=counter, remarks=remarks)
 
 
 if __name__ == "__main__":

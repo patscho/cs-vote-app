@@ -1,6 +1,12 @@
 {% extends "bootstrap/base.html" %}
 {% block title %}CS-Vote-App{% endblock %}
 
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" type="text/css" href="{{url_for('.static', filename='style.css')}}">
+{% endblock %}
+
+
 {% block navbar %}
 <div class="navbar navbar-fixed-top">
   <!-- ... -->
@@ -8,7 +14,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="container text-center col-sm-4">
+<div class="container-fluid text-center">
   <div class="row">
     <div class="page-header text-center">
       <h3>CyberSecurity Pizza Poll</h3>
@@ -19,93 +25,26 @@
   </div>
 
   <form action="/poll">
+    {% for topic in topics %}
       <div class="row">
         <div class="form-group">
-          <h4>Can the Cloud be Secure ?!<br>(Renato Kuiper, Tesorion)</h4>
-          <label class="radio-inline">
-            <input type="radio" name="topic1" id="t1radio1" value="1">1
-          </label>
-          <label class="radio-inline">
-            <input type="radio" name="topic1" id="t1radio2" value="2">2
-          </label>
-          <label class="radio-inline">
-            <input type="radio" name="topic1" id="t1radio3" value="3">3
-          </label>
-          <label class="radio-inline">
-            <input type="radio" name="topic1" id="t1radio4" value="4">4
-          </label>
-          <label class="radio-inline">
-            <input type="radio" name="topic1" id="t1radio5" value="5">5
-          </label>
+          <h4>{{topic.title}}</h4>
+          <input type="radio" name="{{topic.id}}" id="{{topic.id}}radio0" value="0" checked hidden>
+          {% for val in values %}
+            <label class="radio-inline">
+              <input type="radio" name="{{topic.id}}" id="{{topic.id}}radio{{val}}" value="{{val}}"> {{val}}
+            </label>
+          {% endfor %}
         </div>
       </div>
-      <div class="row">
-        <div class="form-group">
-          <h4>Cyber Threat Intelligence<br>(Michael Jones, ING)</h4>
-          <label class="radio-inline">
-            <input type="radio" name="topic2" id="t2radio1" value="1">1
-          </label>
-          <label class="radio-inline">
-            <input type="radio" name="topic2" id="t2radio2" value="2">2
-          </label>
-          <label class="radio-inline">
-            <input type="radio" name="topic2" id="t2radio3" value="3">3
-          </label>
-          <label class="radio-inline">
-            <input type="radio" name="topic2" id="t2radio4" value="4">4
-          </label>
-          <label class="radio-inline">
-            <input type="radio" name="topic2" id="t2radio5" value="5">5
-          </label>
-        </div>
+    {% endfor %}
+    <div class="row">
+      <div class="form-group shadow-textarea purple-border-focus">
+        <label for="textarea1">Do you have any remarks about the sessions and/or suggestions for future topics?</label>
+        <textarea class="form-control z-depth-1" name="textarea1" id="textarea1" rows="3"></textarea>
       </div>
-      <div class="row">
-        <div class="form-group">
-          <h4>Hack#ING workshop: with live OWASP labs<br>(Glenn ten Cate, ING)</h4>
-          <label class="radio-inline">
-            <input type="radio" name="topic3" id="t3radio1" value="1">1
-          </label>
-          <label class="radio-inline">
-            <input type="radio" name="topic3" id="t3radio2" value="2">2
-          </label>
-          <label class="radio-inline">
-            <input type="radio" name="topic3" id="t3radio3" value="3">3
-          </label>
-          <label class="radio-inline">
-            <input type="radio" name="topic3" id="t3radio4" value="4">4
-          </label>
-          <label class="radio-inline">
-            <input type="radio" name="topic3" id="t3radio5" value="5">5
-          </label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="form-group">
-          <h4>Overall Slice of Security Event</h4>
-          <label class="radio-inline">
-            <input type="radio" name="topic4" id="t4radio1" value="1">1
-          </label>
-          <label class="radio-inline">
-            <input type="radio" name="topic4" id="t4radio2" value="2">2
-          </label>
-          <label class="radio-inline">
-            <input type="radio" name="topic4" id="t4radio3" value="3">3
-          </label>
-          <label class="radio-inline">
-            <input type="radio" name="topic4" id="t4radio4" value="4">4
-          </label>
-          <label class="radio-inline">
-            <input type="radio" name="topic4" id="t4radio5" value="5">5
-          </label>
-        </div>
-        <div class="row">
-          <div class="form-group">
-            <label for="textarea1">Do you have any remarks about the sessions and/or suggestions for future topics?</label>
-            <textarea class="form-control" name="textarea1" rows="3"></textarea>
-          </div>
-        </div>
-      </div>
-      <button type="submit" class="btn btn-block btn-primary">Soepmiet</button>
+    </div>
+    <button type="submit" class="btn btn-block btn-primary">Soepmiet</button>
   </form>
 </div>
 
