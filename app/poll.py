@@ -8,11 +8,12 @@ Bootstrap(app)
 
 values = ['1', '2', '3', '4', '5']
 topic1 = {'id': 't1',
-          'title': 'Line security & crypto (KPN)'}
+          'title': 'Can the Cloud be Secure?! (Renato Kuiper, Tesorion)'}
 topic2 = {'id': 't2',
-          'title': 'Threat Hunting (ING CDC)'}
+          'title': 'Cyber Threat Intelligence (Michael Jones, ING)'}
 topic3 = {'id': 't3',
-          'title': 'Live Hacking demo (FOX-IT)'}
+          'title': 'Hack#ING workshop: with live OWASP labs (Glenn ten Cate, '
+                   'ING)'}
 topic4 = {'id': 't4',
           'title': 'Overall pizza session: Slice of Security'}
 topics = [topic1, topic2, topic3, topic4]
