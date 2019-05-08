@@ -15,7 +15,7 @@ topic3 = {'id': 't3',
           'title': 'Hack#ING workshop: with live OWASP labs (Glenn ten Cate, '
                    'ING)'}
 topic4 = {'id': 't4',
-          'title': 'Overall pizza session: Slice of Security'}
+          'title': 'Overall pizza session: Another Slice of Security'}
 topics = [topic1, topic2, topic3, topic4]
 
 filename = 'data.txt'
