@@ -1,0 +1,21 @@
+---
+session_config:
+  - id: 't1'
+    type: 'talk'
+    title: 'Can the cloud be secure?!'
+    speaker: 'Renato Kuiper'
+    company: 'Tesorion'
+  - id: 't2'
+    type: 'talk'
+    title: 'Cyber Threat Intelligence'
+    speaker: 'Michael Jones'
+    company: 'ING'
+  - id: 't3'
+    type: 'talk'
+    title: 'Hack#ING workshop: with live OWASP labs'
+    speaker: 'Glenn ten Cate'
+    company: 'ING'
+  - id: 't4'
+    type: 'session'
+    title: 'Another Slice of Security'
+...
