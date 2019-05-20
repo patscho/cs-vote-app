@@ -1,12 +1,26 @@
 /* custom stylesheet */
 .shadow-textarea textarea.form-control::placeholder {
-    font-weight: 300;
+	font-weight: 300;
 }
 .shadow-textarea textarea.form-control {
-    padding-left: 0.8rem;
+	padding-left: 0.8rem;
 }
 
 textarea {
-	width: 80%;
-	shape-margin: 20px;
+	shape-margin: 30px;
+	background-color: #f0f0f0;
+	max-width: 70%;
+	align-self: center;
+}
+
+body {
+	background-color: #ffffff;
+}
+
+h3 {
+	color: #333333;
+}
+
+.middle {
+	background-color: #ff6200;
 }
