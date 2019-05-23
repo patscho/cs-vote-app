@@ -14,20 +14,15 @@
 
 {% block content %}
 <div class="container text-center">
-  <div class="col-sm-2" style="background-color:white;"></div>
-  <div class="col-sm-8 middle">
   <div class="row">
-    <div class="page-header text-center">
-      <h3>CyberSecurity Pizza Poll</h3>
-    </div>
-  </div>
-  <div class="row">
-    <h5>Please rate the different talks and the session as a whole on a scale of 1 to 5, where 1 is lowest and 5 is highest.</h5>
-  </div>
-
-  <form action="/poll">
-    {% for topic in topics %}
-      <div class="row">
+    <div class="col-sm-2 outer no-float"></div>
+    <div class="col-sm-8 middle no-float">
+      <div class="page-header text-center">
+        <h3>CyberSecurity Pizza Poll</h3>
+      </div>
+      <h5>Please rate the different talks and the session as a whole on a scale of 1 to 5, where 1 is lowest and 5 is highest.</h5>
+      <form action="/poll">
+      {% for topic in topics %}
         <div class="form-group">
           <h4>{{topic.title}}</h4>
           <input type="radio" name="{{topic.id}}" id="{{topic.id}}radio0" value="0" checked hidden>
@@ -37,18 +32,15 @@
             </label>
           {% endfor %}
         </div>
-      </div>
-    {% endfor %}
-    <div class="row">
-      <div class="form-group shadow-textarea purple-border-focus">
-        <label for="textarea1">Do you have any remarks about the talks and/or suggestions for future topics?</label>
-        <textarea class="form-control z-depth-1" name="textarea1" id="textarea1" rows="3" placeholder="Remarks and/or suggestions here..."></textarea>
-      </div>
+      {% endfor %}
+        <div class="form-group shadow-textarea purple-border-focus">
+          <label for="textarea1">Do you have any remarks about the talks and/or suggestions for future topics?</label>
+            <textarea class="form-control z-depth-1" name="textarea1" id="textarea1" rows="3" placeholder="Remarks and/or suggestions here..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-block btn-primary">Soepmiet</button>
+      </form>
     </div>
-    <button type="submit" class="btn btn-block btn-primary">Soepmiet</button>
-  </form>
+    <div class="col-sm-2 outer no-float"></div>
   </div>
-<div class="col-sm-2"></div>
 </div>
-
 {% endblock %}

@@ -11,16 +11,40 @@ textarea {
 	background-color: #f0f0f0;
 	max-width: 70%;
 	align-self: center;
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
 }
 
-body {
-	background-color: #ffffff;
+html,body,.container {
+    height:100%;
+}
+.container {
+    display:table;
+    width: 100%;
+    margin-top: -50px;
+    padding: 50px 0 0 0; /*set left/right padding according to needs*/
+    box-sizing: border-box;
+}
+
+.row {
+    height: 100%;
+    display: table-row;
+}
+
+.row .no-float {
+  display: table-cell;
+  float: none;
 }
 
 h3 {
 	color: #333333;
 }
 
+.outer {
+	background-color: rgba(90, 121, 205, 0.3);
+}
+
 .middle {
-	background-color: #ff6200;
+	background-color: rgba(255, 98, 0, 0.5);
 }

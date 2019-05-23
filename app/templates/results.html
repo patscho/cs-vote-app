@@ -15,34 +15,32 @@
 {% block content %}
 <div class="container text-center">
   <div class="row">
-    <div class="page-header text-center">
-      <h3>CyberSecurity Pizza Poll</h3>
+    <div class="col-sm-2 outer no-float"></div>
+    <div class="col-sm-8 middle no-float">
+      <div class="page-header text-center">
+        <h3>CyberSecurity Pizza Poll</h3>
+      </div>
+      <h5>Results:</h5>
+      <ul class="list-group">
+        {% for score in scores %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          {{ score['topic'] }}
+          <span class="badge badge-warning badge-pill">{{ score['score'] }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+      Total votes: {{ counter }}
+      <h5>Remarks</h5>
+      <ul class="list-group">
+        {% for remark in remarks %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          {{ remark }}
+        </li>
+        {% endfor %}
+      </ul>
     </div>
+    <div class="col-sm-2 outer no-float"></div>
   </div>
-  <div class="row">
-    <h5>Results:</h5>
-    <ul class="list-group">
-      {% for score in scores %}
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        {{ score['topic'] }}
-        <span class="badge badge-warning badge-pill">{{ score['score'] }}</span>
-      </li>
-      {% endfor %}
-    </ul>
-    Total votes: {{ counter }}
-  </div>
-
-  <div class="row">
-    <h5>Remarks</h5>
-    <ul class="list-group">
-      {% for remark in remarks %}
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        {{ remark }}
-      </li>
-      {% endfor %}
-    </ul>
-  </div>
-
 </div>
 
 {% endblock %}
