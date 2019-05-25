@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, make_response
+from flask import Flask, render_template, request, redirect, make_response, send_file
 from flask_bootstrap import Bootstrap
 import json
 import datetime
@@ -6,7 +6,7 @@ import yaml
 
 
 config_file = 'topics.yaml'
-results_file = 'results.txt'
+results_file = 'results/results.json'
 feedback_list = []
 app = Flask(__name__, static_url_path='/static')
 Bootstrap(app)
@@ -96,6 +96,11 @@ def show_results():
         scores = []
     return render_template('results.html', scores=scores,
                            counter=counter, remarks=remarks)
+
+
+@app.route("/results/downloadjson")
+def download_json():
+    return send_file(results_file, as_attachment=True)
 
 
 if __name__ == "__main__":
